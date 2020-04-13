@@ -1,0 +1,25 @@
+<div class="animated fadeIn fast">
+    <h3>Resultados encontrados de: <small>{{ terminoBusq }}</small></h3>
+    <hr>
+
+    <div class="row animated fadeIn" *ngIf="heroesBusq.length == 0">
+        <div class="col-md-12">
+            <div class="alert alert-info" role="alert">
+                No se encontraron resultados para el término: {{ terminoBusq }}
+            </div>
+        </div>
+    </div>
+
+    <div class="card-columns">
+        <div class="card animated fadeIn fast" *ngFor="let heroeBusq of heroesBusq">
+            <img [src]="heroeBusq.img" class="card-img-top img-fluid" [alt]="heroeBusq.nombre">
+            <div class="card-body">
+                <h5 class="card-title">{{ heroeBusq.nombre }}</h5>
+                <p class="card-text">{{ heroeBusq.bio }}</p>
+                <p class="card-text"><small class="text-muted">{{ heroeBusq.aparicion }}</small></p>
+                <button (click)="verHeroe(heroeBusq.id)" class="btn btn-outline-{{heroeBusq.color}} btn-block">Ver más...</button>
+                <!-- <a [routerLink]="['/heroe', i]" class="btn btn-outline-primary btn-block">Ver más anchor...</a> -->
+            </div>
+        </div>
+    </div>
+</div>
